@@ -1,6 +1,6 @@
 const { tag2obj, obj2tag } = require('../dist');
 
-const tag = '<:tag_name attr:1="value1" _attr-2.="value2" />';
+const tag1 = '<:tag_name attr:1="value1" _attr-2.="value2" />';
 const obj = {
   tagName: ':tag_name',
   attrs: {
@@ -13,10 +13,12 @@ const obj = {
   ]
 };
 
+const tag2 = '<:tag_name _attr-2.="value2" attr:1="value1" />';
+
 test('convert tag to object', () => {
-  expect(tag2obj(tag)).toStrictEqual(obj);
+  expect(tag2obj(tag1)).toStrictEqual(obj);
 });
 
 test('convert object to tag', () => {
-  expect(obj2tag(obj.tagName, obj.attrs, { attrOrder: obj.attrOrder })).toBe(tag);
+  expect(obj2tag(obj.tagName, obj.attrs, { attrOrder: obj.attrOrder.reverse() })).toBe(tag2);
 });
