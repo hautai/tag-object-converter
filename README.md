@@ -2,7 +2,7 @@
 
 ## convert tag to object
 ```js
-const { tag2obj } = require('tag-obj-converter');
+const { tag2obj } = require('tag-object-converter');
 
 tag2obj('<tagName attr1="value1" attr2="value2" />');
 /** output
@@ -21,7 +21,7 @@ tag2obj('<tagName attr1="value1" attr2="value2" />');
 ```
 ## convert object to tag
 ```js
-const { obj2tag } = require('tag-obj-converter');
+const { obj2tag } = require('tag-object-converter');
 
 const obj = {
   tagName: 'tagName',
