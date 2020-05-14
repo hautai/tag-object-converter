@@ -1,0 +1,25 @@
+{
+  "name": "tag-object-converter",
+  "version": "0.0.1",
+  "description": "```js const { tag2obj, obj2tag } = require('tag-obj-converter');",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "jest": "26.0.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-hautai:hautai/tag-object-converter.git"
+  },
+  "author": "hautai",
+  "license": "MIT"
+}
