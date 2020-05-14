@@ -1,7 +1,7 @@
 {
   "name": "tag-object-converter",
   "version": "0.0.1",
-  "description": "```js const { tag2obj, obj2tag } = require('tag-obj-converter');",
+  "description": "",
   "main": "dist/index.js",
   "directories": {
     "test": "test"
