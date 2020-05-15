@@ -19,8 +19,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com-hautai:hautai/tag-object-converter.git"
+    "url": "git@github.com:hautai/tag-object-converter.git"
   },
+  "homepage": "https://github.com/hautai/tag-object-converter/blob/master/README.md",
   "author": "hautai",
   "license": "MIT"
 }
