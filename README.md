@@ -29,6 +29,8 @@ const obj = {
     'attr1': 'value1',
     'attr2.': 'value2'
   },
+  // AttrOrder is optional.
+  // If attrOrder is not given, the attributes will be ordered by default in outputted tag
   attrOrder: [
     'attr2',
     'attr1'
@@ -36,12 +38,11 @@ const obj = {
 };
 
 const options = {
-  isSelfClosing: true,
-  finalSpace: true,
-  attrOrder: obj.attrOrder
+  isSelfClosing: true, // Boolean. Default => TRUE
+  finalSpace: true // Boolean. Default => TRUE. If 'isSelfClosing' is FALSE, this option will always be FALSE.
 };
 
-obj2tag(obj.tagName, obj.attrs, options);
+obj2tag(obj, options);
 // output
 // <tagName attr2="value2" attr1="value1" />
 ```

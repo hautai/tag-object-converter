@@ -23,7 +23,14 @@ var tag2obj = function tag2obj(tag) {
     attrs: {},
     attrOrder: []
   };
-  obj.tagName = tagNameRegex.exec(tag)[1];
+
+  try {
+    obj.tagName = tagNameRegex.exec(tag)[1];
+  } catch (e) {
+    e.message = "This format of tag is not supported: ".concat(tag);
+    throw e;
+  }
+
   var attrs = tag.matchAll(attrsRegex);
   var objAttrs = obj.attrs,
       attrOrder = obj.attrOrder;
@@ -49,18 +56,23 @@ var tag2obj = function tag2obj(tag) {
   return obj;
 };
 
-var obj2tag = function obj2tag(tagName, attrObj, _ref) {
-  var _ref$isSelfClosing = _ref.isSelfClosing,
-      isSelfClosing = _ref$isSelfClosing === void 0 ? true : _ref$isSelfClosing,
+var obj2tag = function obj2tag(_ref) {
+  var tagName = _ref.tagName,
+      attrs = _ref.attrs,
       _ref$attrOrder = _ref.attrOrder,
-      attrOrder = _ref$attrOrder === void 0 ? [] : _ref$attrOrder,
-      _ref$finalSpace = _ref.finalSpace,
-      finalSpace = _ref$finalSpace === void 0 ? true : _ref$finalSpace;
+      attrOrder = _ref$attrOrder === void 0 ? [] : _ref$attrOrder;
+
+  var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref2$isSelfClosing = _ref2.isSelfClosing,
+      isSelfClosing = _ref2$isSelfClosing === void 0 ? true : _ref2$isSelfClosing,
+      _ref2$finalSpace = _ref2.finalSpace,
+      finalSpace = _ref2$finalSpace === void 0 ? true : _ref2$finalSpace;
+
   finalSpace = finalSpace ? ' ' : '';
   var tag = "<".concat(tagName);
 
   if (0 === attrOrder.length) {
-    for (var _i2 = 0, _Object$entries = Object.entries(attrObj); _i2 < _Object$entries.length; _i2++) {
+    for (var _i2 = 0, _Object$entries = Object.entries(attrs); _i2 < _Object$entries.length; _i2++) {
       var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
           attrName = _Object$entries$_i[0],
           attrValue = _Object$entries$_i[1];
@@ -74,7 +86,7 @@ var obj2tag = function obj2tag(tagName, attrObj, _ref) {
     try {
       for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
         var _attrName = _step2.value;
-        tag += " ".concat(_attrName, "=\"").concat(attrObj[_attrName], "\"");
+        tag += " ".concat(_attrName, "=\"").concat(attrs[_attrName], "\"");
       }
     } catch (err) {
       _iterator2.e(err);
