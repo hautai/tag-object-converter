@@ -4,14 +4,13 @@ const attrsRegex = /([:a-z_A-Z][:a-z_A-Z\-.0-9]*)="([^"]*?)"/g;
 const tag2obj = tag => {
   const obj = { tagName: '', attrs: {}, attrOrder: [] };
 
-//  try {
-  obj.tagName = tagNameRegex.exec(tag)[1];
-//  }
-//  catch(e) {
-//    e.message = `This format of tag is not supported: ${tag}`;
-//    console.log(e.message);
-//    throw e;
-//  }
+  try {
+    obj.tagName = tagNameRegex.exec(tag)[1];
+  }
+  catch(e) {
+    e.message = `This tag format is not supported: ${tag}`;
+    throw e;
+  }
 
   const attrs = tag.matchAll(attrsRegex);
 
