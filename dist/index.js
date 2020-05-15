@@ -22,15 +22,14 @@ var tag2obj = function tag2obj(tag) {
     tagName: '',
     attrs: {},
     attrOrder: []
-  };
+  }; //  try {
 
-  try {
-    obj.tagName = tagNameRegex.exec(tag)[1];
-  } catch (e) {
-    e.message = "This format of tag is not supported: ".concat(tag);
-    console.log(e.message);
-    throw e;
-  }
+  obj.tagName = tagNameRegex.exec(tag)[1]; //  }
+  //  catch(e) {
+  //    e.message = `This format of tag is not supported: ${tag}`;
+  //    console.log(e.message);
+  //    throw e;
+  //  }
 
   var attrs = tag.matchAll(attrsRegex);
   var objAttrs = obj.attrs,

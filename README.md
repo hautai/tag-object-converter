@@ -1,4 +1,6 @@
 # tag-object-converter
+## change log
+The parameters of 'obj2tag' method is changed from v0.0.2
 
 ## convert tag to object
 ```js
