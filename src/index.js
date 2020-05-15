@@ -10,6 +10,7 @@ const tag2obj = tag => {
   }
   catch(e) {
     e.message = `This format of tag is not supported: ${tag}`;
+    console.log(e.message);
     throw e;
   }
 

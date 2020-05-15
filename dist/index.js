@@ -28,6 +28,7 @@ var tag2obj = function tag2obj(tag) {
     obj.tagName = tagNameRegex.exec(tag)[1];
   } catch (e) {
     e.message = "This format of tag is not supported: ".concat(tag);
+    console.log(e.message);
     throw e;
   }
 
