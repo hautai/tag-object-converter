@@ -29,7 +29,7 @@ const obj = {
     'attr1': 'value1',
     'attr2.': 'value2'
   },
-  // AttrOrder is optional.
+  // attrOrder is optional.
   // If attrOrder is not given, the attributes will be ordered by default in outputted tag
   attrOrder: [
     'attr2',
