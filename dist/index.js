@@ -18,24 +18,20 @@ var tagNameRegex = /<([:a-z_A-Z][:a-z_A-Z\-.0-9]*)/;
 var attrsRegex = /([:a-z_A-Z][:a-z_A-Z\-.0-9]*)="([^"]*?)"/g;
 
 var tag2obj = function tag2obj(tag) {
-  var obj = {
-    tagName: '',
-    attrs: {},
-    attrOrder: []
-  };
+  var tagName = '',
+      attrs = {},
+      attrOrder = [];
 
   try {
-    obj.tagName = tagNameRegex.exec(tag)[1];
+    tagName = tagNameRegex.exec(tag)[1];
   } catch (e) {
     e.message = "This tag format is not supported: ".concat(tag);
     throw e;
   }
 
-  var attrs = tag.matchAll(attrsRegex);
-  var objAttrs = obj.attrs,
-      attrOrder = obj.attrOrder;
+  var rawAttrs = tag.matchAll(attrsRegex);
 
-  var _iterator = _createForOfIteratorHelper(attrs),
+  var _iterator = _createForOfIteratorHelper(rawAttrs),
       _step;
 
   try {
@@ -44,7 +40,7 @@ var tag2obj = function tag2obj(tag) {
           attrName = _step$value[1],
           attrValue = _step$value[2];
 
-      objAttrs[attrName] = attrValue;
+      attrs[attrName] = attrValue;
       attrOrder.push(attrName);
     }
   } catch (err) {
@@ -53,7 +49,11 @@ var tag2obj = function tag2obj(tag) {
     _iterator.f();
   }
 
-  return obj;
+  return {
+    tagName: tagName,
+    attrs: attrs,
+    attrOrder: attrOrder
+  };
 };
 
 var obj2tag = function obj2tag(_ref) {
