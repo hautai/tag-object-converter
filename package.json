@@ -1,6 +1,6 @@
 {
   "name": "tag-object-converter",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/index.js",
   "directories": {
