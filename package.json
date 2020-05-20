@@ -1,7 +1,12 @@
 {
   "name": "tag-object-converter",
   "version": "0.0.10",
-  "description": "",
+  "keywords": [
+    "tag",
+    "obj",
+    "object"
+  ],
+  "description": "Convert between tag and object.",
   "main": "dist/index.js",
   "files": [
     "dist/*"
