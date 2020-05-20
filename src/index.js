@@ -1,4 +1,4 @@
-const tagNameRegex = /<([:a-z_A-Z][:a-z_A-Z\-.0-9]*)/;
+const tagNameRegex = /^<([:a-z_A-Z][:a-z_A-Z\-.0-9]*)/;
 const attrsRegex = /([:a-z_A-Z][:a-z_A-Z\-.0-9]*)="([^"]*?)"/g;
 
 const tag2obj = tag => {
@@ -22,7 +22,7 @@ const tag2obj = tag => {
   return { tagName, attrs, attrOrder };
 };
 
-const obj2tag = ({ tagName, attrs, attrOrder = [] }, { isSelfClosing = true, finalSpace = true } = {}) => {
+const obj2tag = ({ tagName, attrs = {}, attrOrder = [] }, { isSelfClosing = true, finalSpace = true } = {}) => {
   finalSpace = finalSpace ? ' ' : '';
   let tag = `<${tagName}`;
 

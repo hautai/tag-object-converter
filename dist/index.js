@@ -14,7 +14,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-var tagNameRegex = /<([:a-z_A-Z][:a-z_A-Z\-.0-9]*)/;
+var tagNameRegex = /^<([:a-z_A-Z][:a-z_A-Z\-.0-9]*)/;
 var attrsRegex = /([:a-z_A-Z][:a-z_A-Z\-.0-9]*)="([^"]*?)"/g;
 
 var tag2obj = function tag2obj(tag) {
@@ -58,7 +58,8 @@ var tag2obj = function tag2obj(tag) {
 
 var obj2tag = function obj2tag(_ref) {
   var tagName = _ref.tagName,
-      attrs = _ref.attrs,
+      _ref$attrs = _ref.attrs,
+      attrs = _ref$attrs === void 0 ? {} : _ref$attrs,
       _ref$attrOrder = _ref.attrOrder,
       attrOrder = _ref$attrOrder === void 0 ? [] : _ref$attrOrder;
 
