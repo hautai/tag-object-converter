@@ -7,6 +7,9 @@ The parameters of 'obj2tag' method is changed from v0.0.2
 const { tag2obj } = require('tag-object-converter');
 
 tag2obj('<tagName attr1="value1" attr2="value2" />');
+// or
+tag2obj('<tagName attr1="value1" attr2="value2">');
+
 /** output
 {
   tagName: 'tagName',
