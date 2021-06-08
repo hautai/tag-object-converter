@@ -20,7 +20,21 @@ tag2obj('<tagName attr1="value1" attr2="value2">');
   attrOrder: [
     'attr1',
     'attr2'
-  ]
+  ],
+  isClosing: false
+}
+*/
+```
+
+```js
+tag2obj('</tagName>');
+
+/** output
+{
+  tagName: 'tagName',
+  attrs: {},
+  attrOrder: [],
+  isClosing: true
 }
 */
 ```
