@@ -3,7 +3,7 @@ const { tag2obj, obj2tag } = require('../dist');
 //
 const tag1 = '<:tag_name attr:1="value1" _attr-2.="value2" />';
 
-const obj = {
+const obj1 = {
   tagName: ':tag_name',
   attrs: {
     'attr:1': 'value1',
@@ -12,15 +12,29 @@ const obj = {
   attrOrder: [
     'attr:1',
     '_attr-2.'
-  ]
+  ],
+  isClosing: false
 };
 
 test('convert tag to object', () => {
-  expect(tag2obj(tag1)).toStrictEqual(obj);
+  expect(tag2obj(tag1)).toStrictEqual(obj1);
+});
+
+const endingTag = '</:tag_name>';
+
+const endingTagObj = {
+  tagName: ':tag_name',
+  attrs: {},
+  attrOrder: [],
+  isClosing: true
+};
+
+test('convert ending tag to object', () => {
+  expect(tag2obj(endingTag)).toStrictEqual(endingTagObj);
 });
 
 //
-const wrongTag = '</tag>';
+const wrongTag = '< tag>';
 
 test('throw err when encountering wrong tag format', () => {
   expect(() => tag2obj(wrongTag)).toThrow(/format/);
