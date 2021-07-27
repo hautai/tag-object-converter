@@ -13,7 +13,8 @@ const obj1 = {
     'attr:1',
     '_attr-2.'
   ],
-  isClosing: false
+  isClosing: false,
+  isSelfClosing: true
 };
 
 test('convert tag to object', () => {
@@ -26,7 +27,8 @@ const endingTagObj = {
   tagName: ':tag_name',
   attrs: {},
   attrOrder: [],
-  isClosing: true
+  isClosing: true,
+  isSelfClosing: false
 };
 
 test('convert ending tag to object', () => {

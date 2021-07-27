@@ -1,12 +1,18 @@
-const tagNameRegex = /^<(\/)?([:a-z_A-Z][:a-z_A-Z\-.0-9]*)/;
+const tagNameRegex = /^<(\/)?([:a-z_A-Z][:a-z_A-Z\-.0-9]*).*?(\/?)>/;
 const attrsRegex = /([:a-z_A-Z][:a-z_A-Z\-.0-9]*)="([^"]*?)"/g;
 
 const tag2obj = tag => {
-  let tagName = '', attrs = {}, attrOrder = [], isClosing = false;
+  let tagName = '', attrs = {}, attrOrder = [], isClosing = false, isSelfClosing = false;
 
   try {
-    isClosing = !! tagNameRegex.exec(tag)[1];
-    tagName = tagNameRegex.exec(tag)[2];
+    const tagNameExecResult = tagNameRegex.exec(tag);
+    isClosing = !! tagNameExecResult[1];
+    tagName = tagNameExecResult[2];
+    isSelfClosing = !! tagNameExecResult[3];
+    
+    if (isClosing && isSelfClosing) {
+      throw new Error();
+    }
   }
   catch(e) {
     e.message = `This tag format is not supported: ${tag}`;
@@ -20,7 +26,7 @@ const tag2obj = tag => {
     attrOrder.push(attrName);
   }
 
-  return { tagName, attrs, attrOrder, isClosing };
+  return { tagName, attrs, attrOrder, isClosing, isSelfClosing };
 };
 
 const obj2tag = ({ tagName, attrs = {}, attrOrder = [] }, { isSelfClosing = true, finalSpace = true } = {}) => {
